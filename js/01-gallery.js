@@ -14,6 +14,7 @@ for (let i = 0; i < galleryItems.length; i++) {
   newItem.classList.add("gallery__item");
   gallery.append(newItem);
   const itemList = gallery.lastElementChild;
+  console.log(itemList)
   const newLink = document.createElement("a");
   newLink.classList.add("gallery__link");
   newLink.setAttribute("href", galleryItems[i].original);
@@ -25,7 +26,11 @@ for (let i = 0; i < galleryItems.length; i++) {
   newImg.setAttribute("alt", galleryItems[i].description);
   newImg.classList.add("gallery__image");
   linksList.append(newImg);
+  // const instance = basicLightbox.create(itemList);
+  // itemList.onclick = instance.show;
+  
 }
+
 
 //option 2
 
