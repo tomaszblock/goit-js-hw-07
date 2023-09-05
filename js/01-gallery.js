@@ -10,7 +10,6 @@ const items = [];
 //option 1
 
 for (let i = 0; i < galleryItems.length; i++) {
-  console.log(i)
   const newItem = document.createElement("div");
   newItem.classList.add("gallery__item");
   gallery.append(newItem);
