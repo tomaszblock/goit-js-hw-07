@@ -7,32 +7,66 @@ const gallery = document.querySelector(".gallery");
 
 const items = [];
 
-//option 1
+//Option 1
 
-for (let i = 0; i < galleryItems.length; i++) {
-  const newItem = document.createElement("div");
-  newItem.classList.add("gallery__item");
-  gallery.append(newItem);
-  const itemList = gallery.lastElementChild;
-  console.log(itemList)
-  const newLink = document.createElement("a");
-  newLink.classList.add("gallery__link");
-  newLink.setAttribute("href", galleryItems[i].original);
-  itemList.append(newLink);
-  const linksList = itemList.lastElementChild;
-  const newImg = document.createElement("img");
-  newImg.setAttribute("src", galleryItems[i].preview);
-  newImg.setAttribute("data-source", galleryItems[i].original);
-  newImg.setAttribute("alt", galleryItems[i].description);
-  newImg.classList.add("gallery__image");
-  linksList.append(newImg);
-  // const instance = basicLightbox.create(itemList);
-  // itemList.onclick = instance.show;
+for (let item of galleryItems) {
+	  let newItem = document.createElement("div");
+	  newItem.classList.add("gallery__item");
   
-}
+	  let newLink = document.createElement("a");
+	  newLink.classList.add("gallery__link");
+	  newLink.setAttribute("href", item.original);
+  
+	  let newImage = document.createElement("img");
+	  newImage.classList.add("gallery__image");
+	  newImage.setAttribute("src", item.preview);
+	  newImage.setAttribute("alt", item.description);
+	  newImage.setAttribute("data-source", item.original);
+  
+	  
+	  newLink.append(newImage);
+	  newItem.append(newLink);
+	  gallery.append(newItem);
+  }
 
+  gallery.addEventListener("click", (e) => {
+	e.preventDefault();
+	if (e.target.nodeName !== "IMG") {
+		return;}
+	basicLightbox.create(document.querySelector(e.target.src))
+	console.log(e.target.src)
+
+	console.log({target: e.target, currentTarget: e.currentTarget})
+	
+
+  })
 
 //option 2
+
+// for (let i = 0; i < galleryItems.length; i++) {
+//   const newItem = document.createElement("div");
+//   newItem.classList.add("gallery__item");
+//   gallery.append(newItem);
+//   const itemList = gallery.lastElementChild;
+//   console.log(itemList)
+//   const newLink = document.createElement("a");
+//   newLink.classList.add("gallery__link");
+//   newLink.setAttribute("href", galleryItems[i].original);
+//   itemList.append(newLink);
+//   const linksList = itemList.lastElementChild;
+//   const newImg = document.createElement("img");
+//   newImg.setAttribute("src", galleryItems[i].preview);
+//   newImg.setAttribute("data-source", galleryItems[i].original);
+//   newImg.setAttribute("alt", galleryItems[i].description);
+//   newImg.classList.add("gallery__image");
+//   linksList.append(newImg);
+//   // const instance = basicLightbox.create(itemList);
+//   // itemList.onclick = instance.show;
+
+// }
+
+
+//option 3
 
 // for (let i = 0; i < galleryItems.length; i++) {
 //   const newItem = document.createElement("div");
