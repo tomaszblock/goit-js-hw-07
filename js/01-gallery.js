@@ -10,36 +10,34 @@ const items = [];
 //Option 1
 
 for (let item of galleryItems) {
-	  let newItem = document.createElement("div");
-	  newItem.classList.add("gallery__item");
-  
-	  let newLink = document.createElement("a");
-	  newLink.classList.add("gallery__link");
-	  newLink.setAttribute("href", item.original);
-  
-	  let newImage = document.createElement("img");
-	  newImage.classList.add("gallery__image");
-	  newImage.setAttribute("src", item.preview);
-	  newImage.setAttribute("alt", item.description);
-	  newImage.setAttribute("data-source", item.original);
-  
-	  
-	  newLink.append(newImage);
-	  newItem.append(newLink);
-	  gallery.append(newItem);
+  let newItem = document.createElement("div");
+  newItem.classList.add("gallery__item");
+
+  let newLink = document.createElement("a");
+  newLink.classList.add("gallery__link");
+  newLink.setAttribute("href", item.original);
+
+  let newImage = document.createElement("img");
+  newImage.classList.add("gallery__image");
+  newImage.setAttribute("src", item.preview);
+  newImage.setAttribute("alt", item.description);
+  newImage.setAttribute("data-source", item.original);
+
+  newLink.append(newImage);
+  newItem.append(newLink);
+  gallery.append(newItem);
+}
+
+gallery.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (e.target.nodeName !== "IMG") {
+    return;
   }
-
-  gallery.addEventListener("click", (e) => {
-	e.preventDefault();
-	if (e.target.nodeName !== "IMG") {
-		return;}
-	basicLightbox.create(document.querySelector(e.target.src))
-	console.log(e.target.src)
-
-	console.log({target: e.target, currentTarget: e.currentTarget})
-	
-
-  })
+  console.log({ target: e.target, currentTarget: e.currentTarget });
+  console.log(e.target);
+  const test = basicLightbox.create(e.target);
+  test.show();
+});
 
 //option 2
 
@@ -64,7 +62,6 @@ for (let item of galleryItems) {
 //   // itemList.onclick = instance.show;
 
 // }
-
 
 //option 3
 
