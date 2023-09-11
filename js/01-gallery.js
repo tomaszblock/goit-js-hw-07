@@ -33,11 +33,32 @@ gallery.addEventListener("click", (e) => {
   if (e.target.nodeName !== "IMG") {
     return;
   }
-  console.log({ target: e.target, currentTarget: e.currentTarget });
-  console.log(e.target);
-  const test = basicLightbox.create(e.target);
-  test.show();
+  const window = basicLightbox.create(
+    `<img src=${e.target.getAttribute(
+      "data-source"
+    )} alt=${e.target.getAttribute("alt")}>`
+    // ,{
+    //   onClose: (instance) => {
+
+    //   },
+    // }
+  );
+  window.show();
 });
+
+document.addEventListener("keydown", (e) => {
+  if ((e.key = "Escape")) {
+    console.log("dupa");
+  }
+  console.log(e.key);
+});
+
+// document.addEventListener("keydown", (e) => {
+//   console.log({
+//     key: e.key,
+//     code: e.code,
+//   });
+// });
 
 //option 2
 
