@@ -37,18 +37,22 @@ gallery.addEventListener("click", (e) => {
     `<img src=${e.target.getAttribute(
       "data-source"
     )} alt=${e.target.getAttribute("alt")}>`
-    ,
+    ,{
+      closable: false,
+    }
   );
   window.show();
+  document.addEventListener("keydown", (e) => {
+    if ((e.key !== "Escape")) {
+      return;
+    }
+    else {
+      window.close();
+    }
+  });
 });
 
-// document.addEventListener("keydown", (e) => {
-//   if ((e.key !== "Escape")) {
-//     return;
-//   }
-//   else {
-//   console.log("dupa");}
-// });
+
 
 // document.addEventListener("keydown", (e) => {
 //   console.log({
