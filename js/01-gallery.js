@@ -5,8 +5,6 @@ console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
 
-const items = [];
-
 //Option 1
 
 for (let item of galleryItems) {
