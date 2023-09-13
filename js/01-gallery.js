@@ -44,6 +44,7 @@ gallery.addEventListener("click", (e) => {
   window.show();
   document.addEventListener("keydown", (e) => {
     if ((e.key !== "Escape")) {
+      console.log("ni chujam wciśnij ESC")
       return;
     }
     else {
