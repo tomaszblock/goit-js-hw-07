@@ -5,7 +5,7 @@ console.log(galleryItems);
 
 const gallery = document.querySelector(".gallery");
 
-//Option 1
+// //Option 1
 
 for (let item of galleryItems) {
   let newItem = document.createElement("div");
@@ -34,30 +34,28 @@ gallery.addEventListener("click", (e) => {
   const window = basicLightbox.create(
     `<img src=${e.target.getAttribute(
       "data-source"
-    )} alt=${e.target.getAttribute("alt")}>`
-    ,{
+    )} alt=${e.target.getAttribute("alt")}>`,
+    {
       closable: false,
     }
   );
+
   window.show();
   document.addEventListener("keydown", (e) => {
-    if ((e.key !== "Escape")) {
+    if (e.key !== "Escape") {
       return;
-    }
-    else {
+    } else {
       window.close();
     }
   });
 });
 
-
-
-// document.addEventListener("keydown", (e) => {
-//   console.log({
-//     key: e.key,
-//     code: e.code,
-//   });
-// });
+document.addEventListener("keydown", (e) => {
+  console.log({
+    key: e.key,
+    code: e.code,
+  });
+});
 
 //option 2
 
