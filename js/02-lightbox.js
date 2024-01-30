@@ -6,6 +6,8 @@ console.log(galleryItems);
 
 const parent = document.querySelector(".gallery");
 
+const result = [];
+
 for (let item of galleryItems) {
   let newItem = document.createElement("li");
   let newLink = document.createElement("a");
@@ -19,8 +21,10 @@ for (let item of galleryItems) {
 
   newLink.append(newImage);
   newItem.append(newLink);
-  parent.append(newItem);
+  result.push(newItem);
 }
+
+parent.append(...result)
 
 let gallery = new SimpleLightbox(".gallery a", {
   captionsData: "alt",

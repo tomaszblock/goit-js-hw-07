@@ -6,6 +6,8 @@ console.log(galleryItems);
 const gallery = document.querySelector(".gallery");
 
 // //Option 1
+const result = [];
+
 
 for (let item of galleryItems) {
   let newItem = document.createElement("div");
@@ -21,10 +23,13 @@ for (let item of galleryItems) {
   newImage.setAttribute("alt", item.description);
   newImage.setAttribute("data-source", item.original);
 
-  newLink.append(newImage);
-  newItem.append(newLink);
-  gallery.append(newItem);
+newLink.append(newImage);
+newItem.append(newLink);
+result.push(newItem)
 }
+
+ gallery.append(...result);
+
 
 gallery.addEventListener("click", (e) => {
   e.preventDefault();
@@ -35,11 +40,7 @@ gallery.addEventListener("click", (e) => {
     `<img src=${e.target.getAttribute(
       "data-source"
     )} alt=${e.target.getAttribute("alt")}>`,
-    {
-      closable: false,
-    }
   );
-
   window.show();
   document.addEventListener("keydown", (e) => {
     if (e.key !== "Escape") {
@@ -50,12 +51,12 @@ gallery.addEventListener("click", (e) => {
   });
 });
 
-document.addEventListener("keydown", (e) => {
-  console.log({
-    key: e.key,
-    code: e.code,
-  });
-});
+// document.addEventListener("keydown", (e) => {
+//   console.log({
+//     key: e.key,
+//     code: e.code,
+//   });
+// });
 
 //option 2
 
